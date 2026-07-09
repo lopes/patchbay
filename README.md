@@ -1,5 +1,9 @@
 # patchbay
 
+<p align="center">
+  <img src="assets/patchbay-logo.svg" alt="patchbay" width="160">
+</p>
+
 Route your Spotify library like a studio signal chain: one place to send liked songs into the right playlists, without digging through the app.
 
 ## Why "patchbay"?
@@ -12,7 +16,7 @@ The "smart" part — deciding which song belongs in *focus* vs *party* vs *roadt
 
 ## Project structure
 
-```
+```text
 patchbay/
 ├── pyproject.toml          # uv project + dependencies + entry points
 ├── .python-version         # pins Python 3.14
