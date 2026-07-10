@@ -57,7 +57,7 @@ Spotify has been moving endpoints. Current state of this codebase:
 
 - **Playlist contents endpoint renamed:** `/v1/playlists/{id}/tracks` → `/v1/playlists/{id}/items` for all methods (GET/POST/DELETE). The old path returns 403 for every playlist, including public ones. On GET responses, the per-row wrapper key changed from `track` to `item`. `client.py` is on the new endpoints — if a diff introduces `/tracks` back, that's a regression.
 - **`/me/playlists` no longer includes a `tracks` sub-object** — the count is on `items.total` instead. `get_playlists` reads `tracks_total` from there.
-- **February 2026 library-write consolidation** may break `remove_liked_songs` (`DELETE /me/tracks`). The failure mode is 403/404 on a *newly created* Spotify app; the fix (per Spotify's migration guide, linked in `README.md`) is to swap that single call for the new library-removal endpoint. `client.py` flags this at the method site.
+- **February 2026 library-write consolidation** retired `DELETE /me/tracks`. `remove_liked_songs` now uses `DELETE /me/library` with URIs in the body (converted from the caller's IDs). See Spotify's [migration guide](https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide) for the broader context.
 - **Audio-features / energy / valence endpoints were removed for new apps in Nov 2024.** Mood/energy scoring is intentionally *not* done via the API — Claude does it from its own knowledge of the tracks. Don't try to re-add it.
 
 ## Commits

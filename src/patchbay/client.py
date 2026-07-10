@@ -201,10 +201,10 @@ class Spotify:
         return {"deleted": playlist_id}
 
     def remove_liked_songs(self, track_ids: list[str]) -> dict:
-        # NOTE: Spotify began consolidating library writes in Feb 2026. If a
-        # newly created app rejects `DELETE /me/tracks` with 403/404, switch
-        # this one call to the current library endpoint (see README). The
-        # batching stays the same.
-        for batch in _chunks(track_ids, 50):
-            self.request("DELETE", "/me/tracks", body={"ids": batch})
+        # Spotify's Feb 2026 consolidation retired `DELETE /me/tracks` and moved
+        # library removals to `DELETE /me/library`, which takes URIs (not IDs).
+        # Callers still pass IDs so the tool surface doesn't change.
+        uris = [f"spotify:track:{tid}" for tid in track_ids]
+        for batch in _chunks(uris, 50):
+            self.request("DELETE", "/me/library", body={"uris": batch})
         return {"removed": len(track_ids)}

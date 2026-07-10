@@ -191,7 +191,7 @@ The suite also runs on every push and PR via `.github/workflows/tests.yml`.
 - **Tools don't appear (Claude Code):** run `claude mcp list` from any directory to health-check it, and `claude mcp get patchbay` to see its scope/config. stdio tools load at session start, so start a new session after adding it. If the path uses `~`, re-add with a fully absolute path. Make sure `uv` is on PATH (or use its absolute path in the command).
 - **Tools don't appear (Claude Desktop):** fully quit and reopen the app. Confirm the config path is absolute and the JSON has no trailing commas. Logs live in `~/Library/Logs/Claude/` (macOS) or `%APPDATA%\Claude\logs\` (Windows) — see `mcp-server-patchbay.log`.
 - **`No token file` / 401:** run `uv run patchbay-auth`.
-- **`remove_liked_songs` returns 403/404:** Spotify began consolidating library writes in Feb 2026. If a newly created app rejects `DELETE /me/tracks`, edit `src/patchbay/client.py` → `remove_liked_songs` and switch that one call to Spotify's current library-removal endpoint per the [Feb 2026 migration guide](https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide). The batching logic is unchanged; everything else uses stable endpoints.
+- **`remove_liked_songs` returns 403/404:** the Feb 2026 library-write consolidation retired `DELETE /me/tracks`; patchbay now uses the replacement `DELETE /me/library` endpoint per Spotify's [migration guide](https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide). If you still see 403/404, re-run `patchbay-auth` — Spotify occasionally requires re-consent after endpoint moves.
 - **Empty playlist contents:** Spotify returns items only for playlists you own or collaborate on.
 
 ## Security notes
