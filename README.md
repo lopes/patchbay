@@ -158,6 +158,32 @@ Each write asks for your approval in Claude Desktop. Recommended order: build an
 | `remove_tracks` | Remove tracks from a playlist by URI. |
 | `remove_liked_songs` | Remove tracks from Liked Songs by ID (batches of 50). |
 
+## Testing
+
+Two ways to sanity-check patchbay without going through Claude:
+
+**Live smoke check** — hits the real Spotify API, read-only, no writes:
+
+```bash
+uv run patchbay-check
+```
+
+Prints your display name, 5 liked songs, and 5 tracks from your first owned playlist. Exits non-zero on any API error. Fastest way to notice endpoint drift (e.g. the Nov 2024 `/tracks` → `/items` rename) before it surfaces in a live conversation.
+
+**Offline unit + fixture suite** — no network needed:
+
+```bash
+uv run python -m unittest discover tests
+```
+
+Under `tests/fixtures/` are identity-scrubbed captures of real Spotify responses. If Spotify changes a shape, re-record and the shape tests will flag the parts of `client.py` that need updating:
+
+```bash
+uv run python tests/record_fixtures.py
+```
+
+The suite also runs on every push and PR via `.github/workflows/tests.yml`.
+
 ## Troubleshooting
 
 - **Test the server by hand first:** `uv run patchbay` should start without error. If it fails there, it will fail the same way under any client — fix that first.
