@@ -104,6 +104,13 @@ class PlaylistTracksPaginationTest(unittest.TestCase):
         self.assertIn("/items", called_url)
         self.assertNotIn("/tracks", called_url)
 
+    def test_offset_threaded_through(self):
+        page = _page([_playlist_item("t")], total=1000)
+        with patch.object(Spotify, "request", return_value=page) as m:
+            got = self.sp.get_playlist_tracks("PID", limit=1, offset=200)
+        self.assertEqual(m.call_args.kwargs["params"]["offset"], 200)
+        self.assertEqual(got["offset"], 200)
+
 
 class PlaylistsListTest(unittest.TestCase):
     def setUp(self):

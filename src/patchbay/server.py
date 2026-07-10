@@ -36,14 +36,14 @@ def get_playlists(limit: int = 50, offset: int = 0) -> dict:
 
 
 @mcp.tool()
-def get_playlist_tracks(playlist_id: str, limit: int = 300) -> dict:
+def get_playlist_tracks(playlist_id: str, limit: int = 300, offset: int = 0) -> dict:
     """Read tracks in a playlist you own or collaborate on (pages of 100, max 1000).
 
-    Returns {total, count, items:[{id, uri, name, artists, album}]}. For
-    playlists you don't own/collaborate on, Spotify returns metadata only and
-    this may be empty.
+    Returns {total, count, offset, items:[{id, uri, name, artists, album}]}.
+    Use `offset` to continue past the first `limit`. For playlists you don't
+    own/collaborate on, Spotify returns metadata only and this may be empty.
     """
-    return sp.get_playlist_tracks(playlist_id, limit)
+    return sp.get_playlist_tracks(playlist_id, limit, offset)
 
 
 @mcp.tool()

@@ -128,7 +128,7 @@ class Spotify:
                 "id": p["id"],
                 "name": p["name"],
                 "owner": (p.get("owner") or {}).get("id"),
-                "tracks_total": (p.get("tracks") or {}).get("total"),
+                "tracks_total": (p.get("items") or {}).get("total"),
                 "public": p.get("public"),
                 "collaborative": p.get("collaborative"),
             }
@@ -136,23 +136,26 @@ class Spotify:
         ]
         return {"total": page.get("total"), "count": len(items), "items": items}
 
-    def get_playlist_tracks(self, playlist_id: str, limit: int = 300) -> dict:
+    def get_playlist_tracks(self, playlist_id: str, limit: int = 300, offset: int = 0) -> dict:
+        # Spotify renamed the endpoint from /tracks to /items and the per-row
+        # wrapper key from "track" to "item"; the old URL now 403s for every
+        # playlist, including public ones.
         limit = max(1, min(limit, 1000))
         items, total = [], None
         while len(items) < limit:
             page = self.request(
                 "GET",
-                f"/playlists/{playlist_id}/tracks",
-                params={"limit": min(100, limit - len(items)), "offset": len(items)},
+                f"/playlists/{playlist_id}/items",
+                params={"limit": min(100, limit - len(items)), "offset": offset + len(items)},
             )
             total = page.get("total", total)
             batch = page.get("items", [])
             if not batch:
                 break
-            items.extend(_slim_track(it.get("track")) for it in batch)
+            items.extend(_slim_track(it.get("item")) for it in batch)
             if len(items) >= (total or 0):
                 break
-        return {"total": total, "count": len(items), "items": items}
+        return {"total": total, "count": len(items), "offset": offset, "items": items}
 
     def search_tracks(self, query: str, limit: int = 10) -> dict:
         limit = max(1, min(limit, 50))
@@ -179,14 +182,14 @@ class Spotify:
 
     def add_tracks(self, playlist_id: str, track_uris: list[str]) -> dict:
         for batch in _chunks(track_uris, 100):
-            self.request("POST", f"/playlists/{playlist_id}/tracks", body={"uris": batch})
+            self.request("POST", f"/playlists/{playlist_id}/items", body={"uris": batch})
         return {"added": len(track_uris)}
 
     def remove_tracks(self, playlist_id: str, track_uris: list[str]) -> dict:
         for batch in _chunks(track_uris, 100):
             self.request(
                 "DELETE",
-                f"/playlists/{playlist_id}/tracks",
+                f"/playlists/{playlist_id}/items",
                 body={"tracks": [{"uri": u} for u in batch]},
             )
         return {"removed": len(track_uris)}
