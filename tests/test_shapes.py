@@ -18,7 +18,7 @@ from patchbay.client import Spotify
 
 FIXTURES = Path(__file__).parent / "fixtures"
 
-SLIM_TRACK_KEYS = {"id", "uri", "name", "artists", "album"}
+SLIM_TRACK_KEYS = {"id", "uri", "name", "artists", "album", "isrc", "release_year"}
 
 
 def _load(name: str) -> dict:

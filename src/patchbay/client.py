@@ -16,15 +16,24 @@ class SpotifyError(RuntimeError):
 
 
 def _slim_track(track: dict | None) -> dict | None:
-    """Compact track shape, so conversations stay cheap and readable."""
+    """Compact track shape, so conversations stay cheap and readable.
+
+    `isrc` and `release_year` are included because they let downstream code
+    dedupe reliably (same recording across remasters/regions shares an ISRC)
+    and place tracks in time without a per-track lookup.
+    """
     if not track:
         return None
+    album = track.get("album") or {}
+    release_date = album.get("release_date") or ""
     return {
         "id": track.get("id"),
         "uri": track.get("uri"),
         "name": track.get("name"),
         "artists": ", ".join(a["name"] for a in track.get("artists", [])),
-        "album": (track.get("album") or {}).get("name"),
+        "album": album.get("name"),
+        "isrc": (track.get("external_ids") or {}).get("isrc"),
+        "release_year": int(release_date[:4]) if release_date[:4].isdigit() else None,
     }
 
 
