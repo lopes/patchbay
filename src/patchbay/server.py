@@ -81,6 +81,16 @@ def remove_tracks(playlist_id: str, track_uris: list[str]) -> dict:
 
 
 @mcp.tool()
+def delete_playlist(playlist_id: str) -> dict:
+    """Delete a playlist you own (Spotify models this as unfollowing your own playlist).
+
+    Returns {deleted: playlist_id}. Irreversible from patchbay's side, though
+    the Spotify web UI still lets you recover recently unfollowed playlists.
+    """
+    return sp.delete_playlist(playlist_id)
+
+
+@mcp.tool()
 def remove_liked_songs(track_ids: list[str]) -> dict:
     """Remove tracks from Liked Songs, by track ID (not URI). Batches of 50.
 

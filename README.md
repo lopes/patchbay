@@ -133,7 +133,7 @@ You can also pass credentials inline instead of via `.env`:
       "env": { "SPOTIFY_CLIENT_ID": "your_client_id_here" }
 ```
 
-Fully **quit and restart** Claude Desktop (not just close the window). A tools indicator appears near the message box; click it to see patchbay's eight tools.
+Fully **quit and restart** Claude Desktop (not just close the window). A tools indicator appears near the message box; click it to see patchbay's nine tools.
 
 ## Using it
 
@@ -156,6 +156,7 @@ Each write asks for your approval in Claude Desktop. Recommended order: build an
 | `create_playlist` | Create a new (private by default) playlist. |
 | `add_tracks` | Add tracks by URI (batches of 100). |
 | `remove_tracks` | Remove tracks from a playlist by URI. |
+| `delete_playlist` | Delete a playlist you own (unfollows it from your library). |
 | `remove_liked_songs` | Remove tracks from Liked Songs by ID (batches of 50). |
 
 ## Testing

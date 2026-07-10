@@ -194,6 +194,12 @@ class Spotify:
             )
         return {"removed": len(track_uris)}
 
+    def delete_playlist(self, playlist_id: str) -> dict:
+        # Spotify has no true "delete playlist" endpoint; unfollowing your own
+        # playlist removes it from your library, which is what users expect.
+        self.request("DELETE", f"/playlists/{playlist_id}/followers")
+        return {"deleted": playlist_id}
+
     def remove_liked_songs(self, track_ids: list[str]) -> dict:
         # NOTE: Spotify began consolidating library writes in Feb 2026. If a
         # newly created app rejects `DELETE /me/tracks` with 403/404, switch
