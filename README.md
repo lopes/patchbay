@@ -4,117 +4,71 @@
   <img src="assets/patchbay-logo.svg" alt="patchbay" width="160">
 </p>
 
-Route your Spotify library like a studio signal chain: one place to send liked songs into the right playlists, without digging through the app.
+A personal MCP server that exposes Spotify library operations — Liked Songs, playlists, search, add/remove — to **Claude** (Code or Desktop) over stdio.
 
-## Why "patchbay"?
+In a studio, a *patchbay* is the front panel where every audio connection lands, so signals get rerouted with a short cable instead of by rewiring the whole rack. Same idea applied to a Spotify library: liked songs and playlists surface in one place, and each song gets "patched" into the occasion it belongs to (working, driving, coffee, party) through a conversation with Claude.
 
-In a studio, a **patchbay** is a central panel that consolidates all your audio connections — instruments, synths, preamps, effects — into one front panel. Instead of reaching behind heavy racks to rewire cables, you route any signal by plugging a short patch cable into the front. This project is that idea applied to your Spotify library: your Liked Songs and playlists surface in one place, and you "patch" each song into the playlist where it belongs (party, roadtrip, focus, coffee…) with quick, deliberate moves instead of rewiring by hand in the app.
+The categorization judgement lives in the conversation, using Claude's knowledge of the music. Spotify removed audio-features (energy / valence / BPM) for new apps in November 2024, so numeric mood-sorting via the API is no longer possible — patchbay doesn't need it.
 
-Concretely, it's a small, self-authored MCP server that lets **Claude** (Claude Code or the Claude Desktop app) do the routing: read your Liked Songs and playlists, create playlists, add and remove tracks, and clear songs out of Liked Songs. Built with **uv** and modern Python, ~300 lines you can read top to bottom before trusting it.
+## Prerequisites
 
-The "smart" part — deciding which song belongs in *focus* vs *party* vs *roadtrip* — happens in your conversation with Claude, using its knowledge of the actual music. Spotify removed the audio-features / energy / valence endpoints for new apps in November 2024, so numeric mood-sorting via the API is no longer possible; patchbay doesn't need it.
+- Python 3.14+
+- [uv](https://docs.astral.sh/uv/) for dependency + venv management
+- A Spotify account with **Premium** (Development Mode apps require Premium on the app owner)
+- Either Claude Code (CLI) or Claude Desktop
 
-## Project structure
+Only one runtime dependency: `mcp>=1.2.0`. Everything else is standard library.
 
-```text
-patchbay/
-├── pyproject.toml          # uv project + dependencies + entry points
-├── .python-version         # pins Python 3.14
-├── .env.example            # copy to .env and add your Client ID
-├── .gitignore
-├── README.md
-└── src/
-    └── patchbay/
-        ├── __init__.py
-        ├── config.py       # loads env vars / .env, holds constants
-        ├── _http.py        # tiny urllib-based HTTP helper (stdlib only)
-        ├── auth.py         # `patchbay-auth`: one-time browser login (PKCE)
-        ├── client.py       # Spotify API client: tokens, HTTP calls, library ops
-        └── server.py       # `patchbay`: the MCP server Claude Desktop runs
-```
+## Setup
 
-Two entry points are defined in `pyproject.toml`:
+### 1. Create a Spotify app
 
-- `patchbay-auth` → `patchbay.auth:main` — run once to authorize.
-- `patchbay` → `patchbay.server:main` — the MCP server (launched by Claude Desktop).
+1. Open the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard).
+2. **Create app** — any name and description.
+3. Add this exact **Redirect URI**: `http://127.0.0.1:8888/callback` (loopback IP `127.0.0.1`, not `localhost` — Spotify is strict).
+4. Under **"Which API/SDKs are you planning to use?"**, select **Web API**.
+5. Save. Copy the **Client ID**.
 
-## Credentials & environment variables
+Development Mode allows up to 5 authorized users — enough for personal use, no verification needed.
 
-patchbay reads configuration from environment variables, loaded from a local `.env` file (parsed by a small standard-library loader — no third-party dependency). Copy the template and fill in one value:
+### 2. Configure
 
 ```bash
-cp .env.example .env
+cp .env.example .env       # then paste the Client ID
+uv sync                    # creates .venv, installs the one dep
 ```
 
 | Variable | Required | Purpose |
 |----------|----------|---------|
-| `SPOTIFY_CLIENT_ID` | yes | Your app's Client ID — Spotify's equivalent of an "API key". |
+| `SPOTIFY_CLIENT_ID` | yes | App's Client ID. |
 | `SPOTIFY_REDIRECT_URI` | no | Defaults to `http://127.0.0.1:8888/callback`. Must match the Dashboard exactly. |
-| `SPOTIFY_TOKEN_PATH` | no | Override where tokens are cached. Defaults to `~/.config/patchbay/token.json`, falling back to `~/.patchbay/token.json` (chmod 600). |
-| `SPOTIFY_CLIENT_SECRET` | no | Unused — PKCE needs no secret. Present only if you switch flows. |
+| `SPOTIFY_TOKEN_PATH` | no | Override for the cached token. Defaults to `~/.config/patchbay/token.json` (chmod 600), with a fallback to `~/.patchbay/token.json`. |
 
-`.env` and the token file are git-ignored. There is **no client secret** to store: the PKCE flow authorizes using only your Client ID.
+There is no client secret. PKCE authorizes with the Client ID alone; the only on-disk secret is the token cache.
 
-## Setup
-
-### 1. Create your Spotify app (one-time, free)
-
-1. Open the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard) and log in.
-2. Click **Create app** and give it any name and description.
-3. Add this exact **Redirect URI**: `http://127.0.0.1:8888/callback` (loopback IP `127.0.0.1`, not `localhost` — Spotify is strict here).
-4. Under **"Which API/SDKs are you planning to use?"**, select **Web API**.
-5. Save, then copy the **Client ID** into your `.env`.
-
-> Development Mode requires the app owner to have **Premium** (you do) and allows up to 5 authorized users — fine for personal use.
-
-### 2. Install with uv
-
-From the project root:
-
-```bash
-uv sync
-```
-
-That creates `.venv` and installs the one dependency, `mcp` (the MCP SDK); everything else is standard library. (Install uv itself from https://docs.astral.sh/uv/ if you don't have it.)
-
-### 3. Authorize once
+### 3. Authorize (one-time)
 
 ```bash
 uv run patchbay-auth
 ```
 
-Your browser opens; approve access. Tokens land in `~/.config/patchbay/token.json` (or `~/.patchbay/token.json` as a fallback). Repeat only if you change scopes or revoke access.
+A browser window opens; approve access. Tokens land in the path above. Re-run only if scopes change or access is revoked.
 
-### 4. Register patchbay with your Claude client
+### 4. Register with Claude
 
-Both clients launch patchbay the same way — `uv --directory <project root> run patchbay`. The `<project root>` is the folder containing `pyproject.toml` (where this README lives), **not** `src/patchbay`. Using `uv --directory` means uv manages the virtual environment and loads your `.env` automatically. Use an **absolute** path.
+Both clients launch patchbay the same way: `uv --directory <project root> run patchbay`. Use an **absolute** path to the folder containing `pyproject.toml` (not `src/patchbay`).
 
-If `uv` isn't on the client's PATH, use its absolute path instead (find it with `which uv` / `where uv`).
-
-#### Claude Code (CLI)
-
-Register the server with a single command. Flags like `--scope` go *before* the name; everything after `--` is the command used to start the server:
+**Claude Code:**
 
 ```bash
 claude mcp add --scope user patchbay -- uv --directory /ABSOLUTE/PATH/patchbay run patchbay
 ```
 
-`--scope user` makes patchbay available in every Claude Code session, on any project — the right choice for a personal tool. (Use `--scope project` only if you want it committed to a repo's `.mcp.json` and shared with a team.)
+`--scope user` makes patchbay available in every session on every project. Use `--scope project` only when sharing via a repo's `.mcp.json`.
 
-Verify and use:
+Verify: `claude mcp list` (look for `patchbay ✓ Connected`).
 
-```bash
-claude mcp list          # health-checks servers; look for: patchbay ✓ Connected
-claude mcp get patchbay    # shows its config and which scope file it lives in
-```
-
-Inside a session, `/mcp` shows server status. stdio tools are discovered at session start, so if you added patchbay mid-session, start a new session to pick up its tools. If `list` shows a failure, run `uv run patchbay` by hand first — it will fail the same way there, so fix that first. Some shells don't expand `~` in the stored config, so if the connection fails, re-add using a fully absolute path (e.g. `/Users/you/projects/patchbay`) rather than `~/...`.
-
-#### Claude Desktop (app)
-
-Open Claude Desktop → **Settings → Developer → Edit Config**. This opens `claude_desktop_config.json` (macOS: `~/Library/Application Support/Claude/`, Windows: `%APPDATA%\Claude\`).
-
-Add a `patchbay` server:
+**Claude Desktop:** open **Settings → Developer → Edit Config** and add:
 
 ```json
 {
@@ -127,75 +81,92 @@ Add a `patchbay` server:
 }
 ```
 
-You can also pass credentials inline instead of via `.env`:
+Fully **quit and restart** Claude Desktop (not just close the window). A tools indicator appears near the message box.
 
-```json
-      "env": { "SPOTIFY_CLIENT_ID": "your_client_id_here" }
-```
-
-Fully **quit and restart** Claude Desktop (not just close the window). A tools indicator appears near the message box; click it to see patchbay's nine tools.
-
-## Using it
+## Usage
 
 Talk to Claude in plain language:
 
-- "Read my liked songs and propose occasion playlists — party, roadtrip, focus, coffee, work — and show me the plan before changing anything."
+- "Read my liked songs and propose occasion playlists — party, driving, focus, coffee — and show the plan before changing anything."
 - "Create those playlists and add the songs."
-- "Now remove from Liked Songs everything you just filed away."
+- "Now remove from Liked Songs everything that got filed."
 
-Each write asks for your approval in Claude Desktop. Recommended order: build and fill playlists, confirm they look right, *then* remove from Liked Songs — patchbay keeps those as separate steps so a song is only unliked once it's safely in a playlist.
+Every write asks for approval. Recommended sequence: create → populate → verify → empty Liked. patchbay keeps these as separate operations so a song is only unliked once it's safely in a playlist.
+
+## Bundled Claude skills
+
+Under `.claude/skills/`, the repo ships two workflows that ride on top of the MCP server:
+
+- **`/reorg-playlists`** — full library teardown into purpose-driven, mood/occasion playlists. Discourages genre or year splits. Phased: context → discovery → planning → assignment → review → execution, with approval between phases.
+- **`/audit-playlists`** — monthly hygiene check. Reports bloat, cross-remaster duplicates, over-tagged tracks, and Liked Songs accumulation. Proposes fixes; never writes without approval.
+
+Both are picked up automatically by Claude when the session starts in this repo.
 
 ## Tools
 
 | Tool | What it does |
 |------|--------------|
-| `get_liked_songs` | Read Liked Songs (paginated). |
-| `get_playlists` | List your playlists. |
-| `get_playlist_tracks` | Read tracks in a playlist you own/collaborate on. |
+| `get_liked_songs` | Read Liked Songs (paginated). Optional `dedupe=True` collapses remaster/live/version variants. |
+| `get_playlists` | List playlists. |
+| `get_playlist_tracks` | Read tracks in an owned/collaborated playlist. Optional `dedupe=True`. |
 | `search_tracks` | Find tracks in Spotify's catalog. |
 | `create_playlist` | Create a new (private by default) playlist. |
 | `add_tracks` | Add tracks by URI (batches of 100). |
-| `remove_tracks` | Remove tracks from a playlist by URI. |
-| `delete_playlist` | Delete a playlist you own (unfollows it from your library). |
-| `remove_liked_songs` | Remove tracks from Liked Songs by ID (batches of 50). |
+| `remove_tracks` | Remove tracks from a playlist by URI (batches of 100). |
+| `delete_playlist` | Delete a playlist (unfollows it from the current user's library). |
+| `remove_liked_songs` | Remove tracks from Liked Songs by ID (batches of 40, `DELETE /me/library`). |
 
-## Testing
+Track shape returned by reads: `{id, uri, name, artists, album, isrc, release_year}`. `isrc` and `release_year` enable reliable dedup across remasters and era-aware categorization.
 
-Two ways to sanity-check patchbay without going through Claude:
+## Development
 
-**Live smoke check** — hits the real Spotify API, read-only, no writes:
-
-```bash
-uv run patchbay-check
-```
-
-Prints your display name, 5 liked songs, and 5 tracks from your first owned playlist. Exits non-zero on any API error. Fastest way to notice endpoint drift (e.g. the Nov 2024 `/tracks` → `/items` rename) before it surfaces in a live conversation.
-
-**Offline unit + fixture suite** — no network needed:
+**Offline test suite** — stdlib `unittest`, ~11ms, no network:
 
 ```bash
 uv run python -m unittest discover tests
 ```
 
-Under `tests/fixtures/` are identity-scrubbed captures of real Spotify responses. If Spotify changes a shape, re-record and the shape tests will flag the parts of `client.py` that need updating:
+Fixtures under `tests/fixtures/` are identity-scrubbed captures of real Spotify responses. If Spotify changes a shape, re-record and the shape tests flag the parts of `client.py` that need updating:
 
 ```bash
 uv run python tests/record_fixtures.py
 ```
 
-The suite also runs on every push and PR via `.github/workflows/tests.yml`.
+**Live smoke check** — hits the real API, read-only:
+
+```bash
+uv run patchbay-check
+```
+
+Prints the user's display name, 5 Liked Songs, and 5 tracks from the first owned playlist. Fastest way to notice endpoint drift before it surfaces in a live conversation.
+
+The suite runs on every push and PR via `.github/workflows/tests.yml`.
 
 ## Troubleshooting
 
-- **Test the server by hand first:** `uv run patchbay` should start without error. If it fails there, it will fail the same way under any client — fix that first.
-- **Tools don't appear (Claude Code):** run `claude mcp list` from any directory to health-check it, and `claude mcp get patchbay` to see its scope/config. stdio tools load at session start, so start a new session after adding it. If the path uses `~`, re-add with a fully absolute path. Make sure `uv` is on PATH (or use its absolute path in the command).
+- **Test the server by hand first:** `uv run patchbay` should start without error. If it fails there, it fails the same way under any client — fix that first.
+- **Tools don't appear (Claude Code):** `claude mcp list` health-checks each server; `claude mcp get patchbay` shows its config. stdio tools load at session start, so a new session is required after registration. If the path uses `~`, re-add with a fully absolute path. Ensure `uv` is on `PATH` (or use its absolute path).
 - **Tools don't appear (Claude Desktop):** fully quit and reopen the app. Confirm the config path is absolute and the JSON has no trailing commas. Logs live in `~/Library/Logs/Claude/` (macOS) or `%APPDATA%\Claude\logs\` (Windows) — see `mcp-server-patchbay.log`.
 - **`No token file` / 401:** run `uv run patchbay-auth`.
-- **`remove_liked_songs` returns 403/404:** the Feb 2026 library-write consolidation retired `DELETE /me/tracks`; patchbay now uses the replacement `DELETE /me/library` endpoint per Spotify's [migration guide](https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide). If you still see 403/404, re-run `patchbay-auth` — Spotify occasionally requires re-consent after endpoint moves.
-- **Empty playlist contents:** Spotify returns items only for playlists you own or collaborate on.
+- **`remove_liked_songs` returns 403/404:** the Feb 2026 library-write consolidation retired `DELETE /me/tracks`; patchbay uses `DELETE /me/library` per Spotify's [migration guide](https://developer.spotify.com/documentation/web-api/tutorials/february-2026-migration-guide). If 403/404 persists, re-run `patchbay-auth` — Spotify occasionally requires re-consent after endpoint moves.
+- **Empty playlist contents:** Spotify returns items only for playlists the current user owns or collaborates on.
 
-## Security notes
+## Security
 
-- No client secret stored (PKCE). The only on-disk secret is the token cache at `~/.config/patchbay/token.json` (or the `~/.patchbay` fallback), written with `600` permissions.
-- Scopes are limited to library + playlist read/write. No playback, no email, no other users' data.
-- Every tool takes explicit IDs/URIs — the server never decides what to change on its own, and Claude Desktop prompts you to approve each action.
+- **No client secret stored.** PKCE authorizes with the Client ID alone. The only on-disk secret is the token cache, written with `600` permissions.
+- **Minimal scopes:** library + playlist read/write. No playback, no email, no other users' data.
+- **No autonomous decisions:** every tool takes explicit IDs/URIs. The server never chooses what to change; the client (Claude Code / Desktop) prompts for approval on each write.
+
+Report a security issue by opening a private advisory on the repository. This project has no dedicated security contact.
+
+## Contributing
+
+This is a personal project, but PRs are welcome. Before submitting:
+
+- Run the offline suite: `uv run python -m unittest discover tests`. Add or update tests for any new behavior.
+- Follow the commit style: [Scoped Commits](https://scopedcommits.com/) — `<scope>: <description>`, one sentence, no Conventional Commits prefixes and no `Co-Authored-By` footers. Mirror the existing history (`git log --oneline`).
+- See `CLAUDE.md` for architecture notes and non-obvious behaviors before non-trivial changes.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

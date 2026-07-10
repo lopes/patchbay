@@ -3,6 +3,9 @@ name = "patchbay"
 version = "0.1.0"
 description = "A personal Spotify library and playlist manager, exposed to Claude Desktop over MCP."
 readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Joe Lopes" }]
 requires-python = ">=3.14"
 dependencies = [
     "mcp>=1.2.0",
