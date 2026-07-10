@@ -13,7 +13,6 @@ import http.server
 import json
 import os
 import secrets
-import threading
 import time
 import urllib.parse
 import webbrowser
@@ -28,12 +27,14 @@ def _pkce_pair() -> tuple[str, str]:
     return verifier, challenge
 
 
-class _CallbackHandler(http.server.BaseHTTPRequestHandler):
-    result: dict = {}
+_callback_result: dict = {}
 
+
+class _CallbackHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         params = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
-        _CallbackHandler.result = {k: v[0] for k, v in params.items()}
+        _callback_result.clear()
+        _callback_result.update({k: v[0] for k, v in params.items()})
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.end_headers()
@@ -47,12 +48,13 @@ class _CallbackHandler(http.server.BaseHTTPRequestHandler):
 
 
 def _wait_for_callback(port: int) -> dict:
+    _callback_result.clear()  # in case main() is invoked more than once
     server = http.server.HTTPServer(("127.0.0.1", port), _CallbackHandler)
-    thread = threading.Thread(target=server.handle_request)  # exactly one request
-    thread.start()
-    thread.join()
-    server.server_close()
-    return _CallbackHandler.result
+    try:
+        server.handle_request()  # blocks until exactly one request completes
+    finally:
+        server.server_close()
+    return dict(_callback_result)
 
 
 def _save_tokens(payload: dict) -> None:
