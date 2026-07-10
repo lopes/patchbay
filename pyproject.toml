@@ -11,6 +11,7 @@ dependencies = [
 [project.scripts]
 patchbay = "patchbay.server:main"          # the MCP server (what Claude Desktop launches)
 patchbay-auth = "patchbay.auth:main"       # one-time browser authorization
+patchbay-check = "patchbay.check:main"     # read-only smoke check against the live API
 
 [build-system]
 requires = ["hatchling"]
