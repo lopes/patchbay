@@ -1,0 +1,162 @@
+{
+  "tracks": {
+    "href": "https://api.spotify.com/v1/search?offset=0&limit=2&query=canned%20heat&type=track",
+    "limit": 2,
+    "next": null,
+    "offset": 0,
+    "previous": null,
+    "total": 2,
+    "items": [
+      {
+        "album": {
+          "album_type": "album",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6J7biCazzYhU3gM9j1wfid"
+              },
+              "href": "https://api.spotify.com/v1/artists/6J7biCazzYhU3gM9j1wfid",
+              "id": "6J7biCazzYhU3gM9j1wfid",
+              "name": "Jamiroquai",
+              "type": "artist",
+              "uri": "spotify:artist:6J7biCazzYhU3gM9j1wfid"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/17XrgcYNbKz2oTNm6kwVwv"
+          },
+          "href": "https://api.spotify.com/v1/albums/17XrgcYNbKz2oTNm6kwVwv",
+          "id": "17XrgcYNbKz2oTNm6kwVwv",
+          "images": [
+            {
+              "height": 640,
+              "width": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b2734ccb64f022a53d3e8ec84a20"
+            },
+            {
+              "height": 300,
+              "width": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e024ccb64f022a53d3e8ec84a20"
+            },
+            {
+              "height": 64,
+              "width": 64,
+              "url": "https://i.scdn.co/image/ab67616d000048514ccb64f022a53d3e8ec84a20"
+            }
+          ],
+          "is_playable": true,
+          "name": "Synkronized",
+          "release_date": "1999-06-08",
+          "release_date_precision": "day",
+          "total_tracks": 13,
+          "type": "album",
+          "uri": "spotify:album:17XrgcYNbKz2oTNm6kwVwv"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6J7biCazzYhU3gM9j1wfid"
+            },
+            "href": "https://api.spotify.com/v1/artists/6J7biCazzYhU3gM9j1wfid",
+            "id": "6J7biCazzYhU3gM9j1wfid",
+            "name": "Jamiroquai",
+            "type": "artist",
+            "uri": "spotify:artist:6J7biCazzYhU3gM9j1wfid"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 331760,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "GBBBL9902068"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/47oS7xB31QQUyPCgHpM3VZ"
+        },
+        "href": "https://api.spotify.com/v1/tracks/47oS7xB31QQUyPCgHpM3VZ",
+        "id": "47oS7xB31QQUyPCgHpM3VZ",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Canned Heat",
+        "track_number": 1,
+        "type": "track",
+        "uri": "spotify:track:47oS7xB31QQUyPCgHpM3VZ"
+      },
+      {
+        "album": {
+          "album_type": "compilation",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/27a0GiCba9K9lnkKidroFU"
+              },
+              "href": "https://api.spotify.com/v1/artists/27a0GiCba9K9lnkKidroFU",
+              "id": "27a0GiCba9K9lnkKidroFU",
+              "name": "Canned Heat",
+              "type": "artist",
+              "uri": "spotify:artist:27a0GiCba9K9lnkKidroFU"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/0TBmLh3U5sk1F8eF0twjwi"
+          },
+          "href": "https://api.spotify.com/v1/albums/0TBmLh3U5sk1F8eF0twjwi",
+          "id": "0TBmLh3U5sk1F8eF0twjwi",
+          "images": [
+            {
+              "height": 640,
+              "width": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b27308a9f2ae15587fa3da702ba0"
+            },
+            {
+              "height": 300,
+              "width": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e0208a9f2ae15587fa3da702ba0"
+            },
+            {
+              "height": 64,
+              "width": 64,
+              "url": "https://i.scdn.co/image/ab67616d0000485108a9f2ae15587fa3da702ba0"
+            }
+          ],
+          "is_playable": true,
+          "name": "The Best Of Canned Heat",
+          "release_date": "1987-01-01",
+          "release_date_precision": "day",
+          "total_tracks": 10,
+          "type": "album",
+          "uri": "spotify:album:0TBmLh3U5sk1F8eF0twjwi"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/27a0GiCba9K9lnkKidroFU"
+            },
+            "href": "https://api.spotify.com/v1/artists/27a0GiCba9K9lnkKidroFU",
+            "id": "27a0GiCba9K9lnkKidroFU",
+            "name": "Canned Heat",
+            "type": "artist",
+            "uri": "spotify:artist:27a0GiCba9K9lnkKidroFU"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 171373,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "USEM38700071"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/57460SJgSpCXaRJ9YIYHxy"
+        },
+        "href": "https://api.spotify.com/v1/tracks/57460SJgSpCXaRJ9YIYHxy",
+        "id": "57460SJgSpCXaRJ9YIYHxy",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Going Up The Country",
+        "track_number": 7,
+        "type": "track",
+        "uri": "spotify:track:57460SJgSpCXaRJ9YIYHxy"
+      }
+    ]
+  }
+}

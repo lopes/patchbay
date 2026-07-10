@@ -1,0 +1,102 @@
+{
+  "href": "https://api.spotify.com/v1/me/playlists?offset=0&limit=2",
+  "limit": 2,
+  "next": "https://api.spotify.com/v1/me/playlists?offset=2&limit=2",
+  "offset": 0,
+  "previous": null,
+  "total": 12,
+  "items": [
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/5UqfmXnYe9q1yCVx8qZ4eN"
+      },
+      "href": "https://api.spotify.com/v1/playlists/5UqfmXnYe9q1yCVx8qZ4eN",
+      "id": "5UqfmXnYe9q1yCVx8qZ4eN",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e020143f3a3fdce907232ec9f94ab67616d00001e02552acba326b181859e17e092ab67616d00001e025695a657aef0e81bde0c6001ab67616d00001e028958b0a05709be231c9e5531",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e020143f3a3fdce907232ec9f94ab67616d00001e02552acba326b181859e17e092ab67616d00001e025695a657aef0e81bde0c6001ab67616d00001e028958b0a05709be231c9e5531",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e020143f3a3fdce907232ec9f94ab67616d00001e02552acba326b181859e17e092ab67616d00001e025695a657aef0e81bde0c6001ab67616d00001e028958b0a05709be231c9e5531",
+          "width": 60
+        }
+      ],
+      "name": "Nostalgia",
+      "owner": {
+        "display_name": "test_user",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/test_user"
+        },
+        "href": "https://api.spotify.com/v1/users/test_user",
+        "id": "test_user",
+        "type": "user",
+        "uri": "spotify:user:test_user"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "AAAAaqU/Uy6rhbqoq1z5IXDicpTNFhLf",
+      "items": {
+        "href": "https://api.spotify.com/v1/playlists/5UqfmXnYe9q1yCVx8qZ4eN/items",
+        "total": 132
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:5UqfmXnYe9q1yCVx8qZ4eN"
+    },
+    {
+      "collaborative": false,
+      "description": "",
+      "external_urls": {
+        "spotify": "https://open.spotify.com/playlist/3HG1xLF7khRGZk3MxAnxUP"
+      },
+      "href": "https://api.spotify.com/v1/playlists/3HG1xLF7khRGZk3MxAnxUP",
+      "id": "3HG1xLF7khRGZk3MxAnxUP",
+      "images": [
+        {
+          "height": 640,
+          "url": "https://mosaic.scdn.co/640/ab67616d00001e028dd8211c6f6e49c9185e0c7dab67616d00001e02a3530e40e08be7e6a2c56068ab67616d00001e02b44fb740a38a787a03c79c61ab67616d00001e02ee02763fe9e5257716a3009c",
+          "width": 640
+        },
+        {
+          "height": 300,
+          "url": "https://mosaic.scdn.co/300/ab67616d00001e028dd8211c6f6e49c9185e0c7dab67616d00001e02a3530e40e08be7e6a2c56068ab67616d00001e02b44fb740a38a787a03c79c61ab67616d00001e02ee02763fe9e5257716a3009c",
+          "width": 300
+        },
+        {
+          "height": 60,
+          "url": "https://mosaic.scdn.co/60/ab67616d00001e028dd8211c6f6e49c9185e0c7dab67616d00001e02a3530e40e08be7e6a2c56068ab67616d00001e02b44fb740a38a787a03c79c61ab67616d00001e02ee02763fe9e5257716a3009c",
+          "width": 60
+        }
+      ],
+      "name": "Maestro",
+      "owner": {
+        "display_name": "test_user",
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/test_user"
+        },
+        "href": "https://api.spotify.com/v1/users/test_user",
+        "id": "test_user",
+        "type": "user",
+        "uri": "spotify:user:test_user"
+      },
+      "primary_color": null,
+      "public": true,
+      "snapshot_id": "AAAAJoCm+9NMvMVURrcVvz8yuRbwguk3",
+      "items": {
+        "href": "https://api.spotify.com/v1/playlists/3HG1xLF7khRGZk3MxAnxUP/items",
+        "total": 44
+      },
+      "type": "playlist",
+      "uri": "spotify:playlist:3HG1xLF7khRGZk3MxAnxUP"
+    }
+  ]
+}

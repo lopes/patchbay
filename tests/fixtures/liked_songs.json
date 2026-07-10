@@ -1,0 +1,410 @@
+{
+  "href": "https://api.spotify.com/v1/me/tracks?offset=0&limit=5",
+  "items": [
+    {
+      "added_at": "2026-06-28T17:40:49Z",
+      "track": {
+        "album": {
+          "album_type": "album",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/27a0GiCba9K9lnkKidroFU"
+              },
+              "href": "https://api.spotify.com/v1/artists/27a0GiCba9K9lnkKidroFU",
+              "id": "27a0GiCba9K9lnkKidroFU",
+              "name": "Canned Heat",
+              "type": "artist",
+              "uri": "spotify:artist:27a0GiCba9K9lnkKidroFU"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/0PRaZ71Vo31SXl9xQrvUXD"
+          },
+          "href": "https://api.spotify.com/v1/albums/0PRaZ71Vo31SXl9xQrvUXD",
+          "id": "0PRaZ71Vo31SXl9xQrvUXD",
+          "images": [
+            {
+              "height": 640,
+              "width": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b273d8eeb392e2f55ce24e071e02"
+            },
+            {
+              "height": 300,
+              "width": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e02d8eeb392e2f55ce24e071e02"
+            },
+            {
+              "height": 64,
+              "width": 64,
+              "url": "https://i.scdn.co/image/ab67616d00004851d8eeb392e2f55ce24e071e02"
+            }
+          ],
+          "is_playable": true,
+          "name": "Essential",
+          "release_date": "2012-01-01",
+          "release_date_precision": "day",
+          "total_tracks": 19,
+          "type": "album",
+          "uri": "spotify:album:0PRaZ71Vo31SXl9xQrvUXD"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/27a0GiCba9K9lnkKidroFU"
+            },
+            "href": "https://api.spotify.com/v1/artists/27a0GiCba9K9lnkKidroFU",
+            "id": "27a0GiCba9K9lnkKidroFU",
+            "name": "Canned Heat",
+            "type": "artist",
+            "uri": "spotify:artist:27a0GiCba9K9lnkKidroFU"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 171533,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "USCA20500172"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/3z8taNIAn6YfjtQFwnM9FO"
+        },
+        "href": "https://api.spotify.com/v1/tracks/3z8taNIAn6YfjtQFwnM9FO",
+        "id": "3z8taNIAn6YfjtQFwnM9FO",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Going Up The Country - Remastered 2005",
+        "track_number": 2,
+        "type": "track",
+        "uri": "spotify:track:3z8taNIAn6YfjtQFwnM9FO"
+      }
+    },
+    {
+      "added_at": "2026-06-28T16:35:07Z",
+      "track": {
+        "album": {
+          "album_type": "album",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/27a0GiCba9K9lnkKidroFU"
+              },
+              "href": "https://api.spotify.com/v1/artists/27a0GiCba9K9lnkKidroFU",
+              "id": "27a0GiCba9K9lnkKidroFU",
+              "name": "Canned Heat",
+              "type": "artist",
+              "uri": "spotify:artist:27a0GiCba9K9lnkKidroFU"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/3uND4jSyWDOQ86n6tB6DpS"
+          },
+          "href": "https://api.spotify.com/v1/albums/3uND4jSyWDOQ86n6tB6DpS",
+          "id": "3uND4jSyWDOQ86n6tB6DpS",
+          "images": [
+            {
+              "height": 640,
+              "width": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b273b856f981b3172a55cb13af4d"
+            },
+            {
+              "height": 300,
+              "width": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e02b856f981b3172a55cb13af4d"
+            },
+            {
+              "height": 64,
+              "width": 64,
+              "url": "https://i.scdn.co/image/ab67616d00004851b856f981b3172a55cb13af4d"
+            }
+          ],
+          "is_playable": true,
+          "name": "On the Road Again",
+          "release_date": "2003",
+          "release_date_precision": "year",
+          "total_tracks": 10,
+          "type": "album",
+          "uri": "spotify:album:3uND4jSyWDOQ86n6tB6DpS"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/27a0GiCba9K9lnkKidroFU"
+            },
+            "href": "https://api.spotify.com/v1/artists/27a0GiCba9K9lnkKidroFU",
+            "id": "27a0GiCba9K9lnkKidroFU",
+            "name": "Canned Heat",
+            "type": "artist",
+            "uri": "spotify:artist:27a0GiCba9K9lnkKidroFU"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 202840,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "AUXN22331896"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/4zuHizF9ydEXDaAtwU2eAK"
+        },
+        "href": "https://api.spotify.com/v1/tracks/4zuHizF9ydEXDaAtwU2eAK",
+        "id": "4zuHizF9ydEXDaAtwU2eAK",
+        "is_local": false,
+        "is_playable": true,
+        "name": "On the Road Again",
+        "track_number": 10,
+        "type": "track",
+        "uri": "spotify:track:4zuHizF9ydEXDaAtwU2eAK"
+      }
+    },
+    {
+      "added_at": "2026-06-16T23:24:51Z",
+      "track": {
+        "album": {
+          "album_type": "album",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/61VpPyyJn2bitby8tbafzT"
+              },
+              "href": "https://api.spotify.com/v1/artists/61VpPyyJn2bitby8tbafzT",
+              "id": "61VpPyyJn2bitby8tbafzT",
+              "name": "Thurston Harris",
+              "type": "artist",
+              "uri": "spotify:artist:61VpPyyJn2bitby8tbafzT"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/0E72reqQQ7799PLL07DFnG"
+          },
+          "href": "https://api.spotify.com/v1/albums/0E72reqQQ7799PLL07DFnG",
+          "id": "0E72reqQQ7799PLL07DFnG",
+          "images": [
+            {
+              "height": 640,
+              "width": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b273bd9304c2ad35063be591ad9d"
+            },
+            {
+              "height": 300,
+              "width": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e02bd9304c2ad35063be591ad9d"
+            },
+            {
+              "height": 64,
+              "width": 64,
+              "url": "https://i.scdn.co/image/ab67616d00004851bd9304c2ad35063be591ad9d"
+            }
+          ],
+          "is_playable": true,
+          "name": "Little Bitty Pretty One",
+          "release_date": "1959-03-10",
+          "release_date_precision": "day",
+          "total_tracks": 35,
+          "type": "album",
+          "uri": "spotify:album:0E72reqQQ7799PLL07DFnG"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/61VpPyyJn2bitby8tbafzT"
+            },
+            "href": "https://api.spotify.com/v1/artists/61VpPyyJn2bitby8tbafzT",
+            "id": "61VpPyyJn2bitby8tbafzT",
+            "name": "Thurston Harris",
+            "type": "artist",
+            "uri": "spotify:artist:61VpPyyJn2bitby8tbafzT"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 143066,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "QM4TX1767965"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/2yOXKIU9YtBSWjI3OA8tqj"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2yOXKIU9YtBSWjI3OA8tqj",
+        "id": "2yOXKIU9YtBSWjI3OA8tqj",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Little Bitty Pretty One",
+        "track_number": 2,
+        "type": "track",
+        "uri": "spotify:track:2yOXKIU9YtBSWjI3OA8tqj"
+      }
+    },
+    {
+      "added_at": "2026-06-08T14:14:05Z",
+      "track": {
+        "album": {
+          "album_type": "single",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/7hJcb9fa4alzcOq3EaNPoG"
+              },
+              "href": "https://api.spotify.com/v1/artists/7hJcb9fa4alzcOq3EaNPoG",
+              "id": "7hJcb9fa4alzcOq3EaNPoG",
+              "name": "Snoop Dogg",
+              "type": "artist",
+              "uri": "spotify:artist:7hJcb9fa4alzcOq3EaNPoG"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/4Amv0hrD1UuVHSnexg1iqP"
+          },
+          "href": "https://api.spotify.com/v1/albums/4Amv0hrD1UuVHSnexg1iqP",
+          "id": "4Amv0hrD1UuVHSnexg1iqP",
+          "images": [
+            {
+              "height": 640,
+              "width": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b27347f58c2b7fe3bbd8d8671536"
+            },
+            {
+              "height": 300,
+              "width": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e0247f58c2b7fe3bbd8d8671536"
+            },
+            {
+              "height": 64,
+              "width": 64,
+              "url": "https://i.scdn.co/image/ab67616d0000485147f58c2b7fe3bbd8d8671536"
+            }
+          ],
+          "is_playable": true,
+          "name": "Riders On The Storm (Fredwreck Remix)",
+          "release_date": "2007-01-01",
+          "release_date_precision": "day",
+          "total_tracks": 1,
+          "type": "album",
+          "uri": "spotify:album:4Amv0hrD1UuVHSnexg1iqP"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/7hJcb9fa4alzcOq3EaNPoG"
+            },
+            "href": "https://api.spotify.com/v1/artists/7hJcb9fa4alzcOq3EaNPoG",
+            "id": "7hJcb9fa4alzcOq3EaNPoG",
+            "name": "Snoop Dogg",
+            "type": "artist",
+            "uri": "spotify:artist:7hJcb9fa4alzcOq3EaNPoG"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/22WZ7M8sxp5THdruNY3gXt"
+            },
+            "href": "https://api.spotify.com/v1/artists/22WZ7M8sxp5THdruNY3gXt",
+            "id": "22WZ7M8sxp5THdruNY3gXt",
+            "name": "The Doors",
+            "type": "artist",
+            "uri": "spotify:artist:22WZ7M8sxp5THdruNY3gXt"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 382240,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "USMC10400926"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/0RcYEWXtbu4ehdv1tiBOi0"
+        },
+        "href": "https://api.spotify.com/v1/tracks/0RcYEWXtbu4ehdv1tiBOi0",
+        "id": "0RcYEWXtbu4ehdv1tiBOi0",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Riders On The Storm - Fredwreck Remix",
+        "track_number": 1,
+        "type": "track",
+        "uri": "spotify:track:0RcYEWXtbu4ehdv1tiBOi0"
+      }
+    },
+    {
+      "added_at": "2026-05-13T00:56:08Z",
+      "track": {
+        "album": {
+          "album_type": "album",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/74ASZWbe4lXaubB36ztrGX"
+              },
+              "href": "https://api.spotify.com/v1/artists/74ASZWbe4lXaubB36ztrGX",
+              "id": "74ASZWbe4lXaubB36ztrGX",
+              "name": "Bob Dylan",
+              "type": "artist",
+              "uri": "spotify:artist:74ASZWbe4lXaubB36ztrGX"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/5k63xxy9YcKM0H9GS3vP1K"
+          },
+          "href": "https://api.spotify.com/v1/albums/5k63xxy9YcKM0H9GS3vP1K",
+          "id": "5k63xxy9YcKM0H9GS3vP1K",
+          "images": [
+            {
+              "height": 640,
+              "width": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b273b17dfbb2c6960a4b2f708767"
+            },
+            {
+              "height": 300,
+              "width": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e02b17dfbb2c6960a4b2f708767"
+            },
+            {
+              "height": 64,
+              "width": 64,
+              "url": "https://i.scdn.co/image/ab67616d00004851b17dfbb2c6960a4b2f708767"
+            }
+          ],
+          "is_playable": true,
+          "name": "Bob Dylan",
+          "release_date": "1962-03-19",
+          "release_date_precision": "day",
+          "total_tracks": 13,
+          "type": "album",
+          "uri": "spotify:album:5k63xxy9YcKM0H9GS3vP1K"
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/74ASZWbe4lXaubB36ztrGX"
+            },
+            "href": "https://api.spotify.com/v1/artists/74ASZWbe4lXaubB36ztrGX",
+            "id": "74ASZWbe4lXaubB36ztrGX",
+            "name": "Bob Dylan",
+            "type": "artist",
+            "uri": "spotify:artist:74ASZWbe4lXaubB36ztrGX"
+          }
+        ],
+        "disc_number": 1,
+        "duration_ms": 161622,
+        "explicit": false,
+        "external_ids": {
+          "isrc": "USSM16101362"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/0udZHhCi7p1YzMlvI4fXoK"
+        },
+        "href": "https://api.spotify.com/v1/tracks/0udZHhCi7p1YzMlvI4fXoK",
+        "id": "0udZHhCi7p1YzMlvI4fXoK",
+        "is_local": false,
+        "is_playable": true,
+        "name": "In My Time of Dyin'",
+        "track_number": 3,
+        "type": "track",
+        "uri": "spotify:track:0udZHhCi7p1YzMlvI4fXoK"
+      }
+    }
+  ],
+  "limit": 5,
+  "next": "https://api.spotify.com/v1/me/tracks?offset=5&limit=5",
+  "offset": 0,
+  "previous": null,
+  "total": 880
+}

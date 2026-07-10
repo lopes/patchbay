@@ -1,0 +1,500 @@
+{
+  "href": "https://api.spotify.com/v1/playlists/5UqfmXnYe9q1yCVx8qZ4eN/items?offset=0&limit=5",
+  "items": [
+    {
+      "added_at": "2025-06-24T18:30:48Z",
+      "added_by": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/test_user"
+        },
+        "href": "https://api.spotify.com/v1/users/test_user",
+        "id": "test_user",
+        "type": "user",
+        "uri": "spotify:user:test_user"
+      },
+      "is_local": false,
+      "primary_color": null,
+      "item": {
+        "is_playable": true,
+        "explicit": false,
+        "type": "track",
+        "episode": false,
+        "track": true,
+        "album": {
+          "is_playable": true,
+          "type": "album",
+          "album_type": "album",
+          "href": "https://api.spotify.com/v1/albums/2VL7fCZeDWVJAWpIhlRoDm",
+          "id": "2VL7fCZeDWVJAWpIhlRoDm",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b273552acba326b181859e17e092",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e02552acba326b181859e17e092",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/ab67616d00004851552acba326b181859e17e092",
+              "width": 64
+            }
+          ],
+          "name": "Philip Oakey & Giorgio Moroder",
+          "release_date": "1985-07-29",
+          "release_date_precision": "day",
+          "uri": "spotify:album:2VL7fCZeDWVJAWpIhlRoDm",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6ne5YmZH7oCXcZUBsY66sn"
+              },
+              "href": "https://api.spotify.com/v1/artists/6ne5YmZH7oCXcZUBsY66sn",
+              "id": "6ne5YmZH7oCXcZUBsY66sn",
+              "name": "Phil Oakey",
+              "type": "artist",
+              "uri": "spotify:artist:6ne5YmZH7oCXcZUBsY66sn"
+            },
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6jU2Tt13MmXYk0ZBv1KmfO"
+              },
+              "href": "https://api.spotify.com/v1/artists/6jU2Tt13MmXYk0ZBv1KmfO",
+              "id": "6jU2Tt13MmXYk0ZBv1KmfO",
+              "name": "Giorgio Moroder",
+              "type": "artist",
+              "uri": "spotify:artist:6jU2Tt13MmXYk0ZBv1KmfO"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/2VL7fCZeDWVJAWpIhlRoDm"
+          },
+          "total_tracks": 16
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6ne5YmZH7oCXcZUBsY66sn"
+            },
+            "href": "https://api.spotify.com/v1/artists/6ne5YmZH7oCXcZUBsY66sn",
+            "id": "6ne5YmZH7oCXcZUBsY66sn",
+            "name": "Phil Oakey",
+            "type": "artist",
+            "uri": "spotify:artist:6ne5YmZH7oCXcZUBsY66sn"
+          },
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6jU2Tt13MmXYk0ZBv1KmfO"
+            },
+            "href": "https://api.spotify.com/v1/artists/6jU2Tt13MmXYk0ZBv1KmfO",
+            "id": "6jU2Tt13MmXYk0ZBv1KmfO",
+            "name": "Giorgio Moroder",
+            "type": "artist",
+            "uri": "spotify:artist:6jU2Tt13MmXYk0ZBv1KmfO"
+          }
+        ],
+        "disc_number": 1,
+        "track_number": 7,
+        "duration_ms": 232666,
+        "external_ids": {
+          "isrc": "GBAAA0300612"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/0Ytxje4D5iXTHN3MOCC5jS"
+        },
+        "href": "https://api.spotify.com/v1/tracks/0Ytxje4D5iXTHN3MOCC5jS",
+        "id": "0Ytxje4D5iXTHN3MOCC5jS",
+        "name": "Together In Electric Dreams - Remastered 2003 / From \"Electric Dreams\" Original Motion Picture Soundtrack",
+        "uri": "spotify:track:0Ytxje4D5iXTHN3MOCC5jS",
+        "is_local": false
+      },
+      "video_thumbnail": {
+        "url": null
+      }
+    },
+    {
+      "added_at": "2025-06-24T18:30:48Z",
+      "added_by": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/test_user"
+        },
+        "href": "https://api.spotify.com/v1/users/test_user",
+        "id": "test_user",
+        "type": "user",
+        "uri": "spotify:user:test_user"
+      },
+      "is_local": false,
+      "primary_color": null,
+      "item": {
+        "is_playable": true,
+        "explicit": false,
+        "type": "track",
+        "episode": false,
+        "track": true,
+        "album": {
+          "is_playable": true,
+          "type": "album",
+          "album_type": "compilation",
+          "href": "https://api.spotify.com/v1/albums/1cmOT0GhJc3op7L0kJsGsC",
+          "id": "1cmOT0GhJc3op7L0kJsGsC",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b2737c5454c462cedb6eb1aa8852",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e027c5454c462cedb6eb1aa8852",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/ab67616d000048517c5454c462cedb6eb1aa8852",
+              "width": 64
+            }
+          ],
+          "name": "Celebrate (Greatest Hits / Expanded Edition)",
+          "release_date": "2013-03-25",
+          "release_date_precision": "day",
+          "uri": "spotify:album:1cmOT0GhJc3op7L0kJsGsC",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6hN9F0iuULZYWXppob22Aj"
+              },
+              "href": "https://api.spotify.com/v1/artists/6hN9F0iuULZYWXppob22Aj",
+              "id": "6hN9F0iuULZYWXppob22Aj",
+              "name": "Simple Minds",
+              "type": "artist",
+              "uri": "spotify:artist:6hN9F0iuULZYWXppob22Aj"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/1cmOT0GhJc3op7L0kJsGsC"
+          },
+          "total_tracks": 50
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6hN9F0iuULZYWXppob22Aj"
+            },
+            "href": "https://api.spotify.com/v1/artists/6hN9F0iuULZYWXppob22Aj",
+            "id": "6hN9F0iuULZYWXppob22Aj",
+            "name": "Simple Minds",
+            "type": "artist",
+            "uri": "spotify:artist:6hN9F0iuULZYWXppob22Aj"
+          }
+        ],
+        "disc_number": 2,
+        "track_number": 1,
+        "duration_ms": 260773,
+        "external_ids": {
+          "isrc": "GBAAA0100587"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/2u96akbqgCRtkjfLMYrgZo"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2u96akbqgCRtkjfLMYrgZo",
+        "id": "2u96akbqgCRtkjfLMYrgZo",
+        "name": "Don't You (Forget About Me) - Remastered 2001",
+        "uri": "spotify:track:2u96akbqgCRtkjfLMYrgZo",
+        "is_local": false
+      },
+      "video_thumbnail": {
+        "url": null
+      }
+    },
+    {
+      "added_at": "2025-06-24T18:30:48Z",
+      "added_by": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/test_user"
+        },
+        "href": "https://api.spotify.com/v1/users/test_user",
+        "id": "test_user",
+        "type": "user",
+        "uri": "spotify:user:test_user"
+      },
+      "is_local": false,
+      "primary_color": null,
+      "item": {
+        "is_playable": true,
+        "explicit": false,
+        "type": "track",
+        "episode": false,
+        "track": true,
+        "album": {
+          "is_playable": true,
+          "type": "album",
+          "album_type": "album",
+          "href": "https://api.spotify.com/v1/albums/50bQGJWB4VoD1GY3c4vYbv",
+          "id": "50bQGJWB4VoD1GY3c4vYbv",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b2738958b0a05709be231c9e5531",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e028958b0a05709be231c9e5531",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/ab67616d000048518958b0a05709be231c9e5531",
+              "width": 64
+            }
+          ],
+          "name": "Divinyls",
+          "release_date": "1991-01-01",
+          "release_date_precision": "day",
+          "uri": "spotify:album:50bQGJWB4VoD1GY3c4vYbv",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/5t06MTkDD3yr5LVs3YFLQC"
+              },
+              "href": "https://api.spotify.com/v1/artists/5t06MTkDD3yr5LVs3YFLQC",
+              "id": "5t06MTkDD3yr5LVs3YFLQC",
+              "name": "Divinyls",
+              "type": "artist",
+              "uri": "spotify:artist:5t06MTkDD3yr5LVs3YFLQC"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/50bQGJWB4VoD1GY3c4vYbv"
+          },
+          "total_tracks": 11
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/5t06MTkDD3yr5LVs3YFLQC"
+            },
+            "href": "https://api.spotify.com/v1/artists/5t06MTkDD3yr5LVs3YFLQC",
+            "id": "5t06MTkDD3yr5LVs3YFLQC",
+            "name": "Divinyls",
+            "type": "artist",
+            "uri": "spotify:artist:5t06MTkDD3yr5LVs3YFLQC"
+          }
+        ],
+        "disc_number": 1,
+        "track_number": 2,
+        "duration_ms": 227640,
+        "external_ids": {
+          "isrc": "USVI29000004"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/6oNvmplQGUkmAh441Teows"
+        },
+        "href": "https://api.spotify.com/v1/tracks/6oNvmplQGUkmAh441Teows",
+        "id": "6oNvmplQGUkmAh441Teows",
+        "name": "I Touch Myself",
+        "uri": "spotify:track:6oNvmplQGUkmAh441Teows",
+        "is_local": false
+      },
+      "video_thumbnail": {
+        "url": null
+      }
+    },
+    {
+      "added_at": "2025-06-24T18:30:48Z",
+      "added_by": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/test_user"
+        },
+        "href": "https://api.spotify.com/v1/users/test_user",
+        "id": "test_user",
+        "type": "user",
+        "uri": "spotify:user:test_user"
+      },
+      "is_local": false,
+      "primary_color": null,
+      "item": {
+        "is_playable": true,
+        "explicit": false,
+        "type": "track",
+        "episode": false,
+        "track": true,
+        "album": {
+          "is_playable": true,
+          "type": "album",
+          "album_type": "album",
+          "href": "https://api.spotify.com/v1/albums/4YimfceN1R0nOS9CefIFhm",
+          "id": "4YimfceN1R0nOS9CefIFhm",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b2735695a657aef0e81bde0c6001",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e025695a657aef0e81bde0c6001",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/ab67616d000048515695a657aef0e81bde0c6001",
+              "width": 64
+            }
+          ],
+          "name": "Once Upon A Time (Super Deluxe)",
+          "release_date": "1985",
+          "release_date_precision": "year",
+          "uri": "spotify:album:4YimfceN1R0nOS9CefIFhm",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/6hN9F0iuULZYWXppob22Aj"
+              },
+              "href": "https://api.spotify.com/v1/artists/6hN9F0iuULZYWXppob22Aj",
+              "id": "6hN9F0iuULZYWXppob22Aj",
+              "name": "Simple Minds",
+              "type": "artist",
+              "uri": "spotify:artist:6hN9F0iuULZYWXppob22Aj"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/4YimfceN1R0nOS9CefIFhm"
+          },
+          "total_tracks": 47
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/6hN9F0iuULZYWXppob22Aj"
+            },
+            "href": "https://api.spotify.com/v1/artists/6hN9F0iuULZYWXppob22Aj",
+            "id": "6hN9F0iuULZYWXppob22Aj",
+            "name": "Simple Minds",
+            "type": "artist",
+            "uri": "spotify:artist:6hN9F0iuULZYWXppob22Aj"
+          }
+        ],
+        "disc_number": 2,
+        "track_number": 5,
+        "duration_ms": 289453,
+        "external_ids": {
+          "isrc": "GBAAA8500070"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/2x5IXUFOcvvBUtEpnCBNlp"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2x5IXUFOcvvBUtEpnCBNlp",
+        "id": "2x5IXUFOcvvBUtEpnCBNlp",
+        "name": "Alive And Kicking",
+        "uri": "spotify:track:2x5IXUFOcvvBUtEpnCBNlp",
+        "is_local": false
+      },
+      "video_thumbnail": {
+        "url": null
+      }
+    },
+    {
+      "added_at": "2025-06-24T18:30:48Z",
+      "added_by": {
+        "external_urls": {
+          "spotify": "https://open.spotify.com/user/test_user"
+        },
+        "href": "https://api.spotify.com/v1/users/test_user",
+        "id": "test_user",
+        "type": "user",
+        "uri": "spotify:user:test_user"
+      },
+      "is_local": false,
+      "primary_color": null,
+      "item": {
+        "is_playable": true,
+        "explicit": false,
+        "type": "track",
+        "episode": false,
+        "track": true,
+        "album": {
+          "is_playable": true,
+          "type": "album",
+          "album_type": "compilation",
+          "href": "https://api.spotify.com/v1/albums/7Iz89r0GanEDFeAxByW9wI",
+          "id": "7Iz89r0GanEDFeAxByW9wI",
+          "images": [
+            {
+              "height": 640,
+              "url": "https://i.scdn.co/image/ab67616d0000b273af5437d890d1a41486e0a322",
+              "width": 640
+            },
+            {
+              "height": 300,
+              "url": "https://i.scdn.co/image/ab67616d00001e02af5437d890d1a41486e0a322",
+              "width": 300
+            },
+            {
+              "height": 64,
+              "url": "https://i.scdn.co/image/ab67616d00004851af5437d890d1a41486e0a322",
+              "width": 64
+            }
+          ],
+          "name": "Some Guys Have All the Luck",
+          "release_date": "2008-11-16",
+          "release_date_precision": "day",
+          "uri": "spotify:album:7Iz89r0GanEDFeAxByW9wI",
+          "artists": [
+            {
+              "external_urls": {
+                "spotify": "https://open.spotify.com/artist/2y8Jo9CKhJvtfeKOsYzRdT"
+              },
+              "href": "https://api.spotify.com/v1/artists/2y8Jo9CKhJvtfeKOsYzRdT",
+              "id": "2y8Jo9CKhJvtfeKOsYzRdT",
+              "name": "Rod Stewart",
+              "type": "artist",
+              "uri": "spotify:artist:2y8Jo9CKhJvtfeKOsYzRdT"
+            }
+          ],
+          "external_urls": {
+            "spotify": "https://open.spotify.com/album/7Iz89r0GanEDFeAxByW9wI"
+          },
+          "total_tracks": 32
+        },
+        "artists": [
+          {
+            "external_urls": {
+              "spotify": "https://open.spotify.com/artist/2y8Jo9CKhJvtfeKOsYzRdT"
+            },
+            "href": "https://api.spotify.com/v1/artists/2y8Jo9CKhJvtfeKOsYzRdT",
+            "id": "2y8Jo9CKhJvtfeKOsYzRdT",
+            "name": "Rod Stewart",
+            "type": "artist",
+            "uri": "spotify:artist:2y8Jo9CKhJvtfeKOsYzRdT"
+          }
+        ],
+        "disc_number": 1,
+        "track_number": 15,
+        "duration_ms": 302413,
+        "external_ids": {
+          "isrc": "USWB10806971"
+        },
+        "external_urls": {
+          "spotify": "https://open.spotify.com/track/28OaEH5Baa8RRloKvFGBWu"
+        },
+        "href": "https://api.spotify.com/v1/tracks/28OaEH5Baa8RRloKvFGBWu",
+        "id": "28OaEH5Baa8RRloKvFGBWu",
+        "name": "Young Turks - 2008 Remaster",
+        "uri": "spotify:track:28OaEH5Baa8RRloKvFGBWu",
+        "is_local": false
+      },
+      "video_thumbnail": {
+        "url": null
+      }
+    }
+  ],
+  "limit": 5,
+  "next": "https://api.spotify.com/v1/playlists/5UqfmXnYe9q1yCVx8qZ4eN/items?offset=5&limit=5",
+  "offset": 0,
+  "previous": null,
+  "total": 132
+}
