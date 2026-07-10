@@ -6,6 +6,7 @@ MCP tools in server.py stay tiny and readable.
 
 import json
 import os
+import re
 import time
 
 from . import _http, config
@@ -40,6 +41,53 @@ def _slim_track(track: dict | None) -> dict | None:
 def _chunks(seq, size):
     for i in range(0, len(seq), size):
         yield seq[i : i + size]
+
+
+# Matches trailing edition markers like " - Remastered 2011", " (Live at Wembley)",
+# " - Acoustic", " (2020 Remaster)". Used to normalize track names for fallback dedup.
+_VERSION_SUFFIX = re.compile(
+    r"\s*[-(]\s*("
+    r"remaster(ed)?|live|acoustic|karaoke|radio edit|extended|demo|mono|stereo|"
+    r"version|deluxe|edit|bonus track"
+    r")\b.*$",
+    re.IGNORECASE,
+)
+
+
+def _dedupe_key(track: dict) -> tuple:
+    """Grouping key: ISRC when present, otherwise normalized name + primary artist."""
+    if track.get("isrc"):
+        return ("isrc", track["isrc"])
+    name = _VERSION_SUFFIX.sub("", (track.get("name") or "")).strip().lower()
+    primary = (track.get("artists") or "").split(",", 1)[0].strip().lower()
+    return ("na", name, primary)
+
+
+def dedupe_tracks(tracks: list[dict]) -> list[dict]:
+    """Collapse remaster/live/version duplicates while preserving first-seen order.
+
+    Groups by ISRC (guaranteed same recording) when available, else by a
+    normalized (name, primary_artist) key. Within a group, prefers the entry
+    with the cleanest name — no "- Remastered YYYY", "- Live" suffix — and
+    breaks ties by shorter name. Only operates on the tracks passed in; when
+    paginating, dedupe the fully-collected list rather than per-page.
+    """
+    groups: dict[tuple, list[dict]] = {}
+    order: list[tuple] = []
+    for t in tracks:
+        if not t:
+            continue
+        k = _dedupe_key(t)
+        if k not in groups:
+            groups[k] = []
+            order.append(k)
+        groups[k].append(t)
+
+    def _penalty(t: dict) -> tuple:
+        n = t.get("name") or ""
+        return (1 if _VERSION_SUFFIX.search(n) else 0, len(n))
+
+    return [sorted(groups[k], key=_penalty)[0] for k in order]
 
 
 class Spotify:
@@ -111,7 +159,7 @@ class Spotify:
         raise SpotifyError("Rate limited repeatedly; try again later.")
 
     # --- reads -------------------------------------------------------------
-    def get_liked_songs(self, limit: int = 200, offset: int = 0) -> dict:
+    def get_liked_songs(self, limit: int = 200, offset: int = 0, dedupe: bool = False) -> dict:
         limit = max(1, min(limit, 1000))
         items, total = [], None
         while len(items) < limit:
@@ -127,6 +175,8 @@ class Spotify:
             items.extend(_slim_track(it.get("track")) for it in batch)
             if len(items) >= (total or 0):
                 break
+        if dedupe:
+            items = dedupe_tracks(items)
         return {"total": total, "count": len(items), "offset": offset, "items": items}
 
     def get_playlists(self, limit: int = 50, offset: int = 0) -> dict:
@@ -145,7 +195,9 @@ class Spotify:
         ]
         return {"total": page.get("total"), "count": len(items), "items": items}
 
-    def get_playlist_tracks(self, playlist_id: str, limit: int = 300, offset: int = 0) -> dict:
+    def get_playlist_tracks(
+        self, playlist_id: str, limit: int = 300, offset: int = 0, dedupe: bool = False
+    ) -> dict:
         # Spotify renamed the endpoint from /tracks to /items and the per-row
         # wrapper key from "track" to "item"; the old URL now 403s for every
         # playlist, including public ones.
@@ -164,6 +216,8 @@ class Spotify:
             items.extend(_slim_track(it.get("item")) for it in batch)
             if len(items) >= (total or 0):
                 break
+        if dedupe:
+            items = dedupe_tracks(items)
         return {"total": total, "count": len(items), "offset": offset, "items": items}
 
     def search_tracks(self, query: str, limit: int = 10) -> dict:

@@ -15,14 +15,16 @@ sp = Spotify()
 
 # --- reads -----------------------------------------------------------------
 @mcp.tool()
-def get_liked_songs(limit: int = 200, offset: int = 0) -> dict:
+def get_liked_songs(limit: int = 200, offset: int = 0, dedupe: bool = False) -> dict:
     """Read the current user's Liked Songs (most recently added first).
 
     Paginates internally in pages of 50; `limit` caps the total (max 1000).
-    Use `offset` to continue through a large library. Returns
+    Use `offset` to continue through a large library. Set `dedupe=True` to
+    collapse remaster/live/version variants (ISRC-first, name+artist fallback).
+    Returns
     {total, count, offset, items:[{id, uri, name, artists, album, isrc, release_year}]}.
     """
-    return sp.get_liked_songs(limit, offset)
+    return sp.get_liked_songs(limit, offset, dedupe)
 
 
 @mcp.tool()
@@ -36,14 +38,18 @@ def get_playlists(limit: int = 50, offset: int = 0) -> dict:
 
 
 @mcp.tool()
-def get_playlist_tracks(playlist_id: str, limit: int = 300, offset: int = 0) -> dict:
+def get_playlist_tracks(
+    playlist_id: str, limit: int = 300, offset: int = 0, dedupe: bool = False
+) -> dict:
     """Read tracks in a playlist you own or collaborate on (pages of 100, max 1000).
 
-    Returns {total, count, offset, items:[{id, uri, name, artists, album, isrc, release_year}]}.
+    Set `dedupe=True` to collapse remaster/live/version variants (ISRC-first,
+    name+artist fallback). Returns
+    {total, count, offset, items:[{id, uri, name, artists, album, isrc, release_year}]}.
     Use `offset` to continue past the first `limit`. For playlists you don't
     own/collaborate on, Spotify returns metadata only and this may be empty.
     """
-    return sp.get_playlist_tracks(playlist_id, limit, offset)
+    return sp.get_playlist_tracks(playlist_id, limit, offset, dedupe)
 
 
 @mcp.tool()

@@ -47,6 +47,7 @@ Tests:
 
 - **`_slim_track` compacts tracks to `{id, uri, name, artists, album, isrc, release_year}` deliberately** — full Spotify track objects are noisy and expensive in-conversation. `isrc` and `release_year` earn their spot because they enable reliable dedup across remasters and era-aware categorization. Don't widen further without a similar structural reason.
 - **`Spotify.request` centralizes cross-cutting concerns:** token refresh (via `_access_token`), 429 rate-limit retry (5 attempts, honors `Retry-After`), error normalization to `SpotifyError`. Always call through it.
+- **`dedupe_tracks` collapses same-recording duplicates** (remasters, live cuts, region variants) — ISRC when both entries carry one, else normalized `(name, primary_artist)`. Different primary artists never collapse (covers stay distinct). Exposed on `get_liked_songs`/`get_playlist_tracks` via `dedupe=True`; only operates on the passed-in list, so dedupe the fully-collected result rather than each paginated page.
 - **Refresh-token rotation is real** — Spotify occasionally issues a new refresh token during refresh; `_access_token` writes the file back every time.
 - **Access tokens live inside the token file** with a computed `expires_at` (60 s safety margin). Deleting the file forces re-auth; corrupting it will 401 on next call and require re-auth.
 - **`.env` values do not override real environment variables** — the loader uses `setdefault`. Env vars set by Claude Desktop (`env` block) win.

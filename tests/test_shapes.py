@@ -74,6 +74,23 @@ class ShapeTest(unittest.TestCase):
         self.assertEqual(me["id"], "test_user")
         self.assertEqual(me["display_name"], "test_user")
 
+    def test_liked_songs_dedupe_flag_collapses_duplicates(self):
+        # Duplicate the fixture's items so dedupe has something to collapse.
+        raw = _load("liked_songs.json")
+        raw = {**raw, "items": raw["items"] + raw["items"], "total": raw["total"] * 2}
+        with patch.object(Spotify, "request", return_value=raw):
+            got = self.sp.get_liked_songs(limit=len(raw["items"]), dedupe=True)
+        # After dedupe, count should match the unique-recordings count of the
+        # non-duplicated fixture (or less if the fixture itself contains dupes).
+        self.assertLessEqual(got["count"], len(raw["items"]) // 2 + 1)
+
+    def test_playlist_tracks_dedupe_flag(self):
+        raw = _load("playlist_items.json")
+        raw = {**raw, "items": raw["items"] + raw["items"], "total": raw["total"] * 2}
+        with patch.object(Spotify, "request", return_value=raw):
+            got = self.sp.get_playlist_tracks("PID", limit=len(raw["items"]), dedupe=True)
+        self.assertLessEqual(got["count"], len(raw["items"]) // 2 + 1)
+
 
 if __name__ == "__main__":
     unittest.main()
