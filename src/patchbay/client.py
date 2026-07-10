@@ -202,9 +202,10 @@ class Spotify:
 
     def remove_liked_songs(self, track_ids: list[str]) -> dict:
         # Spotify's Feb 2026 consolidation retired `DELETE /me/tracks` and moved
-        # library removals to `DELETE /me/library`, which takes URIs (not IDs).
-        # Callers still pass IDs so the tool surface doesn't change.
+        # library removals to `DELETE /me/library` — URIs as a comma-separated
+        # query param, capped at 40 per call. Callers still pass IDs so the tool
+        # surface doesn't change.
         uris = [f"spotify:track:{tid}" for tid in track_ids]
-        for batch in _chunks(uris, 50):
-            self.request("DELETE", "/me/library", body={"uris": batch})
+        for batch in _chunks(uris, 40):
+            self.request("DELETE", "/me/library", params={"uris": ",".join(batch)})
         return {"removed": len(track_ids)}
