@@ -95,7 +95,7 @@ Every write asks for approval. Recommended sequence: create → populate → ver
 
 ## Bundled Claude skills
 
-Under `.claude/skills/`, the repo ships two workflows that ride on top of the MCP server:
+Under `.agents/skills/`, the repo ships two workflows that ride on top of the MCP server:
 
 - **`/reorg-playlists`** — full library teardown into purpose-driven, mood/occasion playlists. Discourages genre or year splits. Phased: context → discovery → planning → assignment → review → execution, with approval between phases.
 - **`/audit-playlists`** — monthly hygiene check. Reports bloat, cross-remaster duplicates, over-tagged tracks, and Liked Songs accumulation. Proposes fixes; never writes without approval.
@@ -165,7 +165,7 @@ This is a personal project, but PRs are welcome. Before submitting:
 
 - Run the offline suite: `uv run python -m unittest discover tests`. Add or update tests for any new behavior.
 - Follow the commit style: [Scoped Commits](https://scopedcommits.com/) — `<scope>: <description>`, one sentence, no Conventional Commits prefixes and no `Co-Authored-By` footers. Mirror the existing history (`git log --oneline`).
-- See `CLAUDE.md` for architecture notes and non-obvious behaviors before non-trivial changes.
+- See `AGENTS.md` for architecture notes and non-obvious behaviors before non-trivial changes.
 
 ## License
 
