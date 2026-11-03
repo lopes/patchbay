@@ -1,0 +1,13 @@
+# Global default code owners
+* @lopes
+
+# MCP Server & Spotify API Client
+/src/ @lopes
+/tests/ @lopes
+
+# Agent Skills & Guidance
+/.agents/ @lopes
+/AGENTS.md @lopes
+
+# CI/CD Workflows & Repository Governance
+/.github/ @lopes
