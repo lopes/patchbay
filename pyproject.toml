@@ -8,7 +8,7 @@ license-files = ["LICENSE"]
 authors = [{ name = "Joe Lopes" }]
 requires-python = ">=3.14"
 dependencies = [
-    "mcp>=1.30.0",
+    "mcp>=2.3.0",
 ]
 
 [project.scripts]
