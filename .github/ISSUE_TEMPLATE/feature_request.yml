@@ -1,0 +1,30 @@
+name: Feature / Enhancement
+description: "Propose a new Spotify MCP tool or capability for Patchbay"
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What gap, limitation, or operational friction exists today, and why does solving it matter?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: "Architectural background, Spotify Web API endpoints involved, OAuth scope impact, affected files (`src/`, `tests/`), and open questions."
+    validations:
+      required: true
+  - type: textarea
+    id: dod
+    attributes:
+      label: Definition of Done
+      description: Concrete deliverables, invariants, and verification criteria required to close this issue.
+      value: |
+        - [ ] Design questions resolved and approach validated
+        - [ ] Offline unittest coverage and scrubbed fixtures added (`tests/`)
+        - [ ] Zero extra third-party runtime dependencies introduced
+        - [ ] Documentation updated (`README.md`, `AGENTS.md` if applicable)
+    validations:
+      required: true

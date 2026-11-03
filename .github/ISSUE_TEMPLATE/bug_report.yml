@@ -1,0 +1,50 @@
+name: Bug Report
+description: "Report a defect in the Patchbay MCP server, Spotify PKCE auth flow, or API client"
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report a defect, regression, or unexpected behavior in Patchbay.
+  - type: dropdown
+    id: subsystem
+    attributes:
+      label: Affected Subsystem
+      options:
+        - "MCP Tool Execution (stdio server)"
+        - "Spotify Web API Endpoint / Pagination / Rate Limiting"
+        - "OAuth 2.0 PKCE Authorization (`patchbay-auth`)"
+        - "Offline Test Suite & Fixtures (`tests/`)"
+        - "CI/CD Workflows (.github/workflows/)"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description of the Bug
+      description: Clear and concise description of what is broken.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Exact commands, inputs, or steps that trigger the issue.
+      placeholder: |
+        1. Run `uv run patchbay-check` or `uv run python -m unittest discover tests`
+        2. Observe error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Terminal Output / Error Logs
+      description: Paste relevant terminal output or stack trace here.
+      render: shell
